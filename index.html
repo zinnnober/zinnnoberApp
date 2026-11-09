@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meine Seite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site">
+  <nav class="tabs" role="tablist" aria-label="Bereiche">
+    <button class="tab" role="tab" id="tab-ziele" aria-controls="panel-ziele" data-tab="ziele">Meine Ziele</button>
+    <button class="tab" role="tab" id="tab-training" aria-controls="panel-training" data-tab="training">Trainingsplan</button>
+  </nav>
+</header>
+
+<main>
+  <section class="panel" id="panel-ziele" role="tabpanel" aria-labelledby="tab-ziele">
+    <h2>Meine Ziele</h2>
+    <p class="sub">Jedes Ziel ist eine Karte, jede Karte hat ihre To-Dos.</p>
+    <form class="new" id="newGoal" autocomplete="off">
+      <input type="text" id="goalName" placeholder="Neues Ziel, z. B. Marathon laufen" aria-label="Name des neuen Ziels" maxlength="80">
+      <div class="swatches" id="swatches" role="radiogroup" aria-label="Kartenfarbe"></div>
+      <button type="submit">Ziel hinzufügen</button>
+    </form>
+    <section class="grid" id="grid"></section>
+  </section>
+
+  <section class="panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training" hidden>
+    <h2>Trainingsplan</h2>
+    <div class="toolbar">
+      <p class="sub">Dein Wochenplan. Hake Übungen ab, sobald du sie gemacht hast.</p>
+      <button type="button" class="secondary" id="resetWeek">Woche zurücksetzen</button>
+    </div>
+    <section class="week" id="week"></section>
+  </section>
+</main>
+
+<script src="js/util.js"></script>
+<script src="js/ziele.js"></script>
+<script src="js/training.js"></script>
+<script src="js/tabs.js"></script>
+</body>
+</html>
