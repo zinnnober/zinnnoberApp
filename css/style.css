@@ -1,30 +1,30 @@
 :root{
   color-scheme: dark;
-  --bg:#656475; --card:#1C2230; --ink:#E8ECF4; --muted:#8C96AD; --line:#E34234; --field:#3b3b46;
-  --grid-size:32px; --card-width:calc(var(--grid-size) * 10); --grid-line:#e3433442;
+  --bg:#656475; --card:#d2d4d8; --ink:#08090a; --muted:#8C96AD; --line:#E34234; --field:#c7c7e0;
+  --grid-size:16px; --card-width:calc(var(--grid-size) * 20); --grid-line:#e3433442;
   --c0:#3A5BD9; --c1:#2E9E6B; --c2:#E08A1E; --c3:#D6457A; --c4:#7A4FD1;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);container-type:inline-size}
 *{box-sizing:border-box;border-radius:0}
-body{margin:0;background-color:var(--bg);background-image:linear-gradient(to right,var(--grid-line) 1px,transparent 1px),linear-gradient(to bottom,var(--grid-line) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);background-position:center top;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
-main{max-width:1000px;margin:0 auto;padding:28px 18px 60px}
-h1,h2{font-size:clamp(28px,6vw,42px);font-weight:800;letter-spacing:-.02em;margin:0 0 4px}
-.sub{color:var(--muted);margin:0 0 22px}
-.new{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);padding:12px;margin-bottom:24px}
+body{--grid-size:min(16px,calc((100cqi - 36px) / 20));--card-width:calc(var(--grid-size) * 20);margin:0;background-color:var(--bg);background-image:linear-gradient(to right,var(--grid-line) 1px,transparent 1px),linear-gradient(to bottom,var(--grid-line) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);background-position:max(18px,calc(50cqi - 482px)) top;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:1000px;margin:0 auto;padding:var(--grid-size) 18px calc(var(--grid-size) * 2)}
+h1,h2{font-size:clamp(28px,6vw,42px);font-weight:800;letter-spacing:-.02em;margin:0 0 var(--grid-size)}
+.sub{color:var(--muted);margin:0 0 var(--grid-size)}
+.new{display:flex;flex-wrap:wrap;gap:var(--grid-size);align-items:center;background:var(--card);border:1px solid var(--line);padding:var(--grid-size) var(--grid-size) calc(var(--grid-size) + var(--grid-extra-padding,0px));margin-bottom:var(--grid-size)}
 .new input[type=text]{flex:1 1 220px}
-input[type=text]{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:9px 11px;min-width:0}
+input[type=text]{height:calc(var(--grid-size) * 3);font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:0 calc(var(--grid-size) / 2);min-width:0}
 input[type=text]:focus-visible,button:focus-visible,input[type=checkbox]:focus-visible,.sw input:focus-visible+span{outline:2px solid var(--c0);outline-offset:2px}
-button{font:inherit;cursor:pointer;border:0;padding:9px 14px;background:var(--ink);color:var(--bg);font-weight:600}
-button.ghost{background:transparent;color:var(--muted);padding:4px 8px;font-weight:400}
+button{width:var(--grid-button-width,max-content);height:calc(var(--grid-size) * 3);font:inherit;line-height:1.25;cursor:pointer;border:0;padding:0 var(--grid-size);background:var(--ink);color:var(--bg);font-weight:600}
+button.ghost{height:calc(var(--grid-size) * 2);background:transparent;color:var(--muted);padding:0 calc(var(--grid-size) / 2);font-weight:400}
 button.ghost:hover{color:var(--ink)}
-.swatches{display:flex;gap:6px}
+.swatches{display:flex;gap:calc(var(--grid-size) / 2)}
 .sw input{position:absolute;opacity:0}
 .sw{position:relative}
-.sw span{display:block;width:26px;height:26px;cursor:pointer;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line)}
+.sw span{display:block;width:var(--grid-size);height:var(--grid-size);cursor:pointer;border:calc(var(--grid-size) / 8) solid var(--card);box-shadow:0 0 0 1px var(--line)}
 .sw input:checked+span{box-shadow:0 0 0 2px var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-width)),var(--card-width)));gap:16px;align-items:start}
-.goal{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--accent);padding:14px 14px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-width)),var(--card-width)));gap:var(--grid-size);align-items:start}
+.goal{background:var(--card);border:1px solid var(--line);border-top:var(--grid-size) solid var(--accent);padding:var(--grid-size) calc(var(--grid-size) - 1px) calc(var(--grid-size) + var(--grid-extra-padding,0px))}
 .head{display:flex;gap:6px;align-items:center}
 .title{flex:1;font-size:20px;font-weight:800;letter-spacing:-.01em;background:transparent;border-color:transparent;padding:4px 6px;margin-left:-6px}
 .title:hover{border-color:var(--line)}
@@ -35,27 +35,27 @@ ul{list-style:none;margin:0;padding:0}
 li{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--line)}
 li label{flex:1;cursor:pointer;word-break:break-word}
 li.done label{color:var(--muted);text-decoration:line-through}
-input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);flex:none}
-.add{display:flex;gap:8px;margin-top:8px}
+.goal input[type=checkbox],.day input[type=checkbox]{width:var(--grid-size);height:var(--grid-size);margin:0;accent-color:var(--accent);flex:none}
+.add{display:flex;gap:calc(var(--grid-size) / 2);margin-top:var(--grid-size)}
 .add input{flex:1}
-.add button{background:var(--accent);color:#fff;padding:9px 12px}
+.add button{background:var(--accent);color:#fff}
 .empty{color:var(--muted);text-align:center;padding:40px 10px;grid-column:1/-1}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 
 /* Reiter */
-.site{max-width:1000px;margin:0 auto;padding:20px 18px 0}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
-.tabs .tab{background:transparent;color:var(--muted);padding:10px 16px;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.site{max-width:1000px;margin:0 auto;padding:var(--grid-size) 18px var(--grid-extra-padding,0px)}
+.tabs{display:flex;gap:calc(var(--grid-size) / 2);border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs .tab{height:calc(var(--grid-size) * 3);background:transparent;color:var(--muted);padding:0 var(--grid-size);border-bottom:calc(var(--grid-size) / 4) solid transparent;margin-bottom:-1px;white-space:nowrap}
 .tabs .tab:hover{color:var(--ink)}
 .tabs .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--c0)}
 .panel[hidden]{display:none}
 
 /* Trainingsplan */
-.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
+.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--grid-size);padding-bottom:var(--grid-extra-padding,0px);margin-bottom:var(--grid-size)}
 .toolbar .sub{margin:0}
 button.secondary{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-.week{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-width)),var(--card-width)));gap:16px;align-items:start}
-.day{--accent:var(--c0);background:var(--card);border:1px solid var(--line);padding:14px}
+.week{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-width)),var(--card-width)));gap:var(--grid-size);align-items:start}
+.day{--accent:var(--c0);background:var(--card);border:1px solid var(--line);padding:calc(var(--grid-size) - 1px) calc(var(--grid-size) - 1px) calc(var(--grid-size) - 1px + var(--grid-extra-padding,0px))}
 .day.today{border-color:var(--c0);box-shadow:0 0 0 1px var(--c0)}
 .dayhead{display:flex;align-items:center;gap:8px}
 .dayhead h3{margin:0;font-size:18px;font-weight:800}
@@ -63,19 +63,20 @@ button.secondary{background:var(--card);color:var(--ink);border:1px solid var(--
 .daytitle{width:100%;margin:8px 0 4px}
 .rest{color:var(--muted);font-size:14px;padding:8px 0}
 .detail{display:block;font-size:13px;color:var(--muted)}
-.exadd{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:6px;margin-top:8px}
+.exadd{display:grid;grid-template-columns:repeat(3,calc(var(--grid-size) * 4)) auto;gap:calc(var(--grid-size) / 2);margin-top:var(--grid-size)}
 .exadd .name{grid-column:1/-1}
 .exadd button{background:var(--accent);color:#fff}
-input[type=number]{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:9px 8px;min-width:0;width:100%}
+input[type=number]{height:calc(var(--grid-size) * 3);font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:0 calc(var(--grid-size) / 2);min-width:0;width:100%}
 input[type=number]:focus-visible{outline:2px solid var(--c0);outline-offset:2px}
 
 /* Anmeldung und Status */
-.loading{text-align:center;color:var(--muted);padding:60px 18px}
-.login{display:flex;justify-content:center;padding:60px 18px}
-.loginbox{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;background:var(--card);border:1px solid var(--line);padding:20px}
+.loading{text-align:center;color:var(--muted);padding:calc(var(--grid-size) * 4) var(--grid-size)}
+.login{display:flex;justify-content:center;padding:calc(var(--grid-size) * 4) var(--grid-size)}
+.loginbox{display:flex;flex-direction:column;gap:var(--grid-size);width:100%;max-width:var(--card-width);background:var(--card);border:1px solid var(--line);padding:var(--grid-size)}
 .loginbox h2{margin:0 0 4px}
-input[type=email],input[type=password]{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:9px 11px;min-width:0}
+input[type=email],input[type=password]{height:calc(var(--grid-size) * 3);font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);padding:0 calc(var(--grid-size) / 2);min-width:0}
 input[type=email]:focus-visible,input[type=password]:focus-visible{outline:2px solid var(--c0);outline-offset:2px}
 .error{color:var(--c3);margin:0;min-height:1.2em;font-size:14px}
 .bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding-bottom:6px;color:var(--muted);font-size:13px}
 [hidden]{display:none !important}
+.panel>h2,.panel>.sub{padding-bottom:var(--grid-extra-padding,0px)}

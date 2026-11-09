@@ -33,6 +33,7 @@ App.onReady(function(){
   function save(){ App.save(KEY, data); }
 
   function render(focusDay){
+    App.unobserveCards(week);
     week.textContent = '';
     data.forEach(function(d, di){
       var card = el('article', {'class': 'day' + (di === today ? ' today' : '')});
@@ -89,6 +90,8 @@ App.onReady(function(){
       }
       card.appendChild(form);
       week.appendChild(card);
+      App.alignCard(card);
+      App.alignButtons(card);
     });
     if (focusDay != null){
       var f = week.querySelector('input[data-day="' + focusDay + '"]');

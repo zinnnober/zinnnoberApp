@@ -27,6 +27,7 @@ App.onReady(function(){
   var grid = document.getElementById('grid');
 
   function render(focusGoalId){
+    App.unobserveCards(grid);
     grid.textContent = '';
     if (!goals.length){
       grid.appendChild(el('p', {'class':'empty'}, 'Noch keine Ziele. Gib oben dein erstes Ziel ein.'));
@@ -90,6 +91,8 @@ App.onReady(function(){
       card.appendChild(head); card.appendChild(bar); card.appendChild(meta);
       card.appendChild(list); card.appendChild(form);
       grid.appendChild(card);
+      App.alignCard(card);
+      App.alignButtons(card);
     });
     if (focusGoalId){
       var f = grid.querySelector('input[data-goal="' + focusGoalId + '"]');
