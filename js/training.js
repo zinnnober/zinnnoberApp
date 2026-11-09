@@ -1,7 +1,7 @@
 // Reiter "Trainingsplan": Wochenplan mit Übungen pro Tag
-(function(){
+App.onReady(function(){
   var el = App.el, uid = App.uid;
-  var KEY = 'training-prototyp-v1';
+  var KEY = 'training';
   var DAYS = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
   var today = (new Date().getDay() + 6) % 7; // Montag = 0
 
@@ -103,4 +103,4 @@
   });
 
   render();
-})();
+});

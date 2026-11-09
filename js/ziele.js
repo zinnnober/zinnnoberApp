@@ -1,15 +1,13 @@
-(function(){
-  var KEY = 'ziele-prototyp-v1';
+App.onReady(function(){
+  var KEY = 'ziele';
   var COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)','var(--c4)'];
   var color = 0;
 
   var uid = App.uid, el = App.el;
 
   function load(){
-    try {
-      var raw = localStorage.getItem(KEY);
-      if (raw) return JSON.parse(raw);
-    } catch (e) {}
+    var saved = App.load(KEY, function(){ return null; });
+    if (saved) return saved;
     return [{
       id: uid(), title: 'Beispiel: Marathon laufen', color: 1,
       todos: [
@@ -22,7 +20,7 @@
   var goals = load();
 
   function save(){
-    try { localStorage.setItem(KEY, JSON.stringify(goals)); } catch (e) {}
+    App.save(KEY, goals);
   }
 
 
@@ -122,4 +120,4 @@
   });
 
   render();
-})();
+});
